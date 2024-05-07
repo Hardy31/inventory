@@ -25,6 +25,7 @@ dependencies {
     //обавляем зависимости spring-boot-starter-web, томкат встроен
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //    implementation 'org.springframework.boot:spring-boot-starter-tomcat' //томкат встроен
+    // implementation group: 'org.springframework.boot', name: 'spring-boot-devtools' //одтягивание зависимостей и перезапуск после изменений
 
     //    Подключаем H2, не забываем про spring-boot-starter-data-jpa для работы с Entity
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

@@ -1,15 +1,39 @@
 plugins {
     id 'java'
+
+    //  добавляем Spring Boot
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
-group = 'org.example'
+// Изменил группу на TRK
+group = 'org.trk'
 version = '1.0-SNAPSHOT'
+
+//Добавил версию Java
+java {
+    sourceCompatibility = '11'
+}
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+
+    //обавляем зависимости spring-boot-starter-web, томкат встроен
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //    implementation 'org.springframework.boot:spring-boot-starter-tomcat' //томкат встроен
+
+    //    Подключаем H2, не забываем про spring-boot-starter-data-jpa для работы с Entity
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }

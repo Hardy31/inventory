@@ -20,5 +20,10 @@
 -- CREATE TABLE tmc AS SELECT * FROM CSVREAD('C:/Users/Administrator/IdeaProjects/inventory/src/main/resources/dataCSVt.csv',null,'fieldSeparator=;');
 -- CREATE TABLE tmc AS SELECT * FROM CSVREAD('C:/Users/Administrator/IdeaProjects/inventory/src/main/resources/dataCSVZ.csv',null,'fieldSeparator=;');
 -- CREATE TABLE tmc AS SELECT * FROM CSVREAD('C:/Users/Administrator/IdeaProjects/inventory/src/main/resources/TabUTF8.txt',null,'fieldSeparator=\\t');
+
+-- CREATE TABLE tmc AS SELECT * FROM CSVREAD('C:/Users/Administrator/IdeaProjects/inventory/src/main/resources/encoded-111.csv',null,'fieldSeparator=;');
  CREATE TABLE tmc AS SELECT * FROM CSVREAD('C:/Users/Administrator/IdeaProjects/inventory/src/main/resources/encoded-111.csv',null,'fieldSeparator=;');
--- CREATE TABLE tmc AS SELECT * FROM CSVREAD('resources/unicodeUTF8.txt',null,'fieldSeparator=;');
+
+
+
+--ALTER TABLE tmc MODIFY COLUMN id INT auto_increment;

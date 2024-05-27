@@ -1,63 +1,39 @@
 package org.trk.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import java.util.List;
 
 
 @Data
-//@Builder
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(force = true)
+@ToString
 @Entity
 @Table(name = "tmc", schema = "public")
-public class Position implements Serializable {
+public class Position {
 
     @Id
-//    @Column (length = 25)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
 
     @Column(nullable = false, length = 100)
-    private String code;
+    private String code;                    //Инвентарный код
 
     @Column(nullable = false, length = 1000)
-    private  String description;
+    private  String description;            //Описание, расшифровка позиции
 
-    @Column(length = 50)
-    private  String location;
+    @Column(name = "components")
+    @OneToMany (fetch = FetchType.EAGER)
+    @JoinColumn(name = "tmc_id")
+    private List<Position> components;            //Компоненты (композиция) составляющие комплект
+
+    @Column(name = "location", length = 50)
+    private  String location;               //место нахождения (кабинет, склад, ...
 
     @Column
-    private  String tag;
+    private  String tag;                    // дополнительная информация
 
-    public Position(String code, String description, String location, String tag) {
-        this.code = code;
-        this.description = description;
-        this.location = location;
-        this.tag = tag;
-    }
-
-    public Position(Integer id, String code, String description, String location, String tag) {
-        this.id = id;
-        this.code = code;
-        this.description = description;
-        this.location = location;
-        this.tag = tag;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Position{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                ", tag='" + tag + '\'' +
-                '}';
-    }
 }
